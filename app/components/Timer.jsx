@@ -3,7 +3,7 @@ import React from "react";
 var Timer = React.createClass({
   render: function(){
     return(
-      <div>Timer component</div>
+      <div>Timer.jsx</div>
     )
   }
 });
