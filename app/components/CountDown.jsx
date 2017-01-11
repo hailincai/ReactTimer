@@ -15,6 +15,10 @@ var CountDown = React.createClass({
     this.timer = setInterval(() => {
       let newSecs = this.state.totalSecs - 1;
       this.setState({totalSecs: (newSecs >= 0) ? newSecs : 0});
+
+      if (newSecs == 0) {
+        this.setState({countdownStatus: "stopped"});
+      }
     }, 1000);
   },
 
@@ -26,6 +30,12 @@ var CountDown = React.createClass({
       });
   },
 
+  //is invoked immediately before rendering when new props or state are being received.
+  //componentWillUpdate: function(nextProps, nextState) {
+  //},
+
+  //is invoked immediately after updating occurs.
+  //componentWillUpdate happen before componentDidUpdate
   componentDidUpdate: function(prevProps, prevState) {
     if (this.state.countdownStatus !== prevState.countdownStatus) {
       switch(this.state.countdownStatus) {
@@ -43,6 +53,20 @@ var CountDown = React.createClass({
         }
       }
     }
+  },
+
+  //componentWillMount: function(){
+  //  console.log("componentWillMount");
+  //},
+
+  //componentDidMount: function() {
+  //  console.log("componentDidMount");
+  //},
+
+  componentWillUnmount: function() {
+    console.log("Compoenent will unmount");
+    clearInterval(this.timer);
+    this.timer = undefined;
   },
 
   render: function () {
