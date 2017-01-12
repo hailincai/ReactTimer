@@ -2,9 +2,8 @@ var webpack = require("webpack");
 
 module.exports = {
   entry: {
-    "externals": ["script!jquery/dist/jquery.min.js",
-    "script!foundation-sites/dist/foundation.min.js"],
-    "app": "./app/app.jsx"
+    "app": "./app/app.jsx",
+    "vendor": ["react", "react-dom", "react-router", "script!jquery/dist/jquery.min.js", "script!foundation-sites/dist/foundation.min.js"]
   },
 
   externals: {
@@ -15,7 +14,8 @@ module.exports = {
     new webpack.ProvidePlugin({
       "$": "jquery",
       "jQuery": "jquery"
-    })
+    }),
+    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"./public/vendor.js")
   ],
 
   output: {
