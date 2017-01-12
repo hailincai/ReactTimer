@@ -8,7 +8,7 @@ import CountDown from "CountDown";
 //load foundation-sites
 //style! inject style in html
 //css! load css file
-require("style!css!foundation-sites/dist/foundation.min.css");
+//require("style!css!foundation-sites/dist/foundation.min.css");
 $(document).foundation();
 
 require("style!css!sass!applicationStyles");
